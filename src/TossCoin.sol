@@ -25,7 +25,7 @@ contract TossCoin {
 
     event Donate(address from, uint256 amount);
     event Run(address owner, uint256 timestamp, uint256 value, uint256 nonce);
-    event Redeem(address owner, uint256 prize);
+    event Redeem(uint256 nonce, address owner, uint256 prize);
     event WithdrawFee(address protocol, uint256 fee);
     event SetDelay(uint256 delay);
     event Pause(bool paused);
@@ -87,11 +87,11 @@ contract TossCoin {
         require(!coins[_nonce].redeemed, "ra");
         require(status(_nonce, roundId) == Status.FRONT, "rn");
 
-        coins[_nonce].redeemed == true;
+        coins[_nonce].redeemed = true;
         (bool success, ) = coins[_nonce].owner.call{value: coins[_nonce].value * 2}("");
         require(success, "rc");
 
-        emit Redeem(coins[_nonce].owner, coins[_nonce].value * 2);
+        emit Redeem(_nonce, coins[_nonce].owner, coins[_nonce].value * 2);
     }
 
     /* ----- user view ----- */
