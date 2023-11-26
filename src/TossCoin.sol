@@ -91,7 +91,7 @@ contract TossCoin {
         (bool success, ) = coins[_nonce].owner.call{value: coins[_nonce].value * 2}("");
         require(success, "rc");
 
-        emit Redeem(coins[nonce].owner, coins[_nonce].value * 2);
+        emit Redeem(coins[_nonce].owner, coins[_nonce].value * 2);
     }
 
     /* ----- user view ----- */
