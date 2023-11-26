@@ -1,0 +1,18 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+[rpc_endpoints]
+sepolia = "${ETHSEPOLIA_RPC_URL}"
+arbitrum = "${ARB_RPC_URL}"
+arbitrum-sepolia = "${ARBSEPOLIA_RPC_URL}"
+polygon = "${POL_RPC_URL}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
+arbitrum = { key = "${ARBISCAN_API_KEY}" }
+arbitrum-sepolia = { url = "https://api-sepolia.arbiscan.io/api", key = "${ARBISCAN_API_KEY}" }
+polygon = { key = "${POLYGONSCAN_API_KEY}" }
